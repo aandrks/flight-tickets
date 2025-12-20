@@ -31,7 +31,7 @@ month = "11"
 direct = "true"
 group_by = "departure_at"
 
-engine = create_engine("postgresql://postgres:kolosov37575@localhost/flights_data")
+engine = create_engine("sqlite:///flights_data.db")
 url = f"https://api.travelpayouts.com/aviasales/v3/grouped_prices?origin={origin}&destination={destination_parameter}&currency={currency}&departure_at={year}-{month}&direct={direct}&group_by={group_by}&token=a60f8ad1351c2c95edfd9767cd8261c5"
 
 # dict_result = requests.get(url).json()
