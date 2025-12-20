@@ -1,0 +1,49 @@
+# This workflow warns and then closes issues and PRs that have had no activity for a specified amount of time.
+#
+# You can adjust the behavior by modifying this file.
+# For more information, see:
+# https://github.com/actions/stale
+name: Flights Information Collecting
+
+on:
+  schedule:
+  - cron: '0 14 * * *'
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:                        
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        
+      
+      - name: Run collector
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: python flights_collecting.py
+        
+    
+      - name: Upload database as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: flight-database
+          path: flight_prices.db
+    # permissions:
+    #   issues: write
+    #   pull-requests: write
+
+    # steps:
+    # - uses: actions/stale@v5
+    #   with:
+    #     repo-token: ${{ secrets.GITHUB_TOKEN }}
+    #     stale-issue-message: 'Stale issue message'
+    #     stale-pr-message: 'Stale pull request message'
+    #     stale-issue-label: 'no-issue-activity'
+    #     stale-pr-label: 'no-pr-activity'
