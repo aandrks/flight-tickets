@@ -27,7 +27,7 @@ jobs:
       - name: Run collector
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: python flights_collecting.py
+        run: python main.py
         
     
       - name: Upload database as artifact
