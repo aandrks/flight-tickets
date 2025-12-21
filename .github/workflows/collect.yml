@@ -27,6 +27,7 @@ jobs:
       - name: Run collector
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          AVIA_KEY: ${{ secrets.AVIA_KEY }}
         run: python main.py
         
     
@@ -35,15 +36,3 @@ jobs:
         with:
           name: flights-database
           path: flights_data.db
-    # permissions:
-    #   issues: write
-    #   pull-requests: write
-
-    # steps:
-    # - uses: actions/stale@v5
-    #   with:
-    #     repo-token: ${{ secrets.GITHUB_TOKEN }}
-    #     stale-issue-message: 'Stale issue message'
-    #     stale-pr-message: 'Stale pull request message'
-    #     stale-issue-label: 'no-issue-activity'
-    #     stale-pr-label: 'no-pr-activity'
