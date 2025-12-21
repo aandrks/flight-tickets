@@ -33,7 +33,7 @@ direct = "true"
 group_by = "departure_at"
 
 
-DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///flights_data.db')
+DATABASE_URL = os.getenv('DATABASE_URL')
 AVIA_KEY = os.getenv('AVIA_KEY')
 engine = create_engine(DATABASE_URL)
 url = f"https://api.travelpayouts.com/aviasales/v3/grouped_prices?origin={origin}&destination={destination_parameter}&currency={currency}&departure_at={year}-{month}&direct={direct}&group_by={group_by}&token={AVIA_KEY}"
