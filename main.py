@@ -33,8 +33,9 @@ group_by = "departure_at"
 
 
 DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///flights_data.db')
+AVIA_KEY = os.getenv('AVIA_KEY')
 engine = create_engine(DATABASE_URL)
-url = f"https://api.travelpayouts.com/aviasales/v3/grouped_prices?origin={origin}&destination={destination_parameter}&currency={currency}&departure_at={year}-{month}&direct={direct}&group_by={group_by}&token=a60f8ad1351c2c95edfd9767cd8261c5"
+url = f"https://api.travelpayouts.com/aviasales/v3/grouped_prices?origin={origin}&destination={destination_parameter}&currency={currency}&departure_at={year}-{month}&direct={direct}&group_by={group_by}&token={AVIA_KEY}"
 
 # dict_result = requests.get(url).json()
 #
@@ -84,8 +85,8 @@ for direction1 in flights_directions:
             year = "2026"
 
         urls_list = [
-            f"https://api.travelpayouts.com/aviasales/v3/grouped_prices?origin={origin}&destination={direction1}&currency={currency}&departure_at={year}-{month}&direct={direct}&group_by={group_by}&token=a60f8ad1351c2c95edfd9767cd8261c5",
-            f"https://api.travelpayouts.com/aviasales/v3/grouped_prices?origin={origin}&destination={direction1}&currency={currency}&departure_at={year}-{month}&group_by={group_by}&token=a60f8ad1351c2c95edfd9767cd8261c5"
+            f"https://api.travelpayouts.com/aviasales/v3/grouped_prices?origin={origin}&destination={direction1}&currency={currency}&departure_at={year}-{month}&direct={direct}&group_by={group_by}&token={AVIA_KEY}",
+            f"https://api.travelpayouts.com/aviasales/v3/grouped_prices?origin={origin}&destination={direction1}&currency={currency}&departure_at={year}-{month}&group_by={group_by}&token={AVIA_KEY}"
         ]
 
         # url = f"https://api.travelpayouts.com/aviasales/v3/grouped_prices?origin={origin}&destination={direction1}&currency={currency}&departure_at={year}-{month}&direct={direct}&group_by={group_by}&token=a60f8ad1351c2c95edfd9767cd8261c5"
