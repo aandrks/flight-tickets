@@ -26,8 +26,8 @@ jobs:
       
       - name: Run collector
         env:
-          DATABASE_URL: ${{ vars.DATABASE_URL }}
-          AVIA_KEY: ${{ vars.AVIA_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          AVIA_KEY: ${{ secrets.AVIA_KEY }}
         run: python main.py
         
     
