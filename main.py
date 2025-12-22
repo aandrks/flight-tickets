@@ -33,10 +33,8 @@ direct = "true"
 group_by = "departure_at"
 
 
-# DATABASE_URL = os.getenv('DATABASE_URL')
-# AVIA_KEY = os.getenv('AVIA_KEY')
-DATABASE_URL="postgresql://postgres.jtnvkollorwxeuaiobxp:q.nDe2n4-!BRbF2@aws-1-eu-north-1.pooler.supabase.com:6543/postgres"
-AVIA_KEY="a60f8ad1351c2c95edfd9767cd8261c5"
+DATABASE_URL = os.getenv('DATABASE_URL')
+AVIA_KEY = os.getenv('AVIA_KEY')
 engine = create_engine(DATABASE_URL)
 url = f"https://api.travelpayouts.com/aviasales/v3/grouped_prices?origin={origin}&destination={destination_parameter}&currency={currency}&departure_at={year}-{month}&direct={direct}&group_by={group_by}&token={AVIA_KEY}"
 
