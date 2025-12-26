@@ -142,7 +142,7 @@ df = pd.DataFrame({"flight_number" : flight_number,
                    "weekday" : weekday,
                    "departure_day_part" : timedate_departure,
                    "arrival_day_part" : timedate_arrival,
-                   "rate rub/usd" : exrate,
+                   "rate_rub/usd" : exrate,
                   "price" : price})
 # print(df)
 
