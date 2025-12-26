@@ -20,6 +20,7 @@ days_before_departure = []
 weekday = []
 timedate_departure = []
 timedate_arrival = []
+exrate = []
 price = []
 
 
@@ -70,7 +71,13 @@ def define_timedate(d):
     else:
         return "Night"
 
-
+def getexrate():
+    try:
+        rate = round((requests.get("https://v6.exchangerate-api.com/v6/2a5e1c89b6c0ff1b2ab2e0eb/pair/USD/RUB")).json()["conversion_rate"], 2)
+    except:
+        rate = None
+    return rate
+    
 for direction1 in flights_directions:
     print(direction1)
     # going through each month flights pricing
@@ -119,6 +126,7 @@ for direction1 in flights_directions:
                 price.append(a['price'])
                 timedate_departure.append(define_timedate(a['departure_at']))
                 timedate_arrival.append(define_timedate(datetime.strptime(a['departure_at'], "%Y-%m-%dT%H:%M:%S%z") + timedelta(minutes = int(a['duration']))))
+                exrate.append(getexrate())
 
 
 df = pd.DataFrame({"flight_number" : flight_number,
@@ -134,6 +142,7 @@ df = pd.DataFrame({"flight_number" : flight_number,
                    "weekday" : weekday,
                    "departure_day_part" : timedate_departure,
                    "arrival_day_part" : timedate_arrival,
+                   "rate rub/usd" : exrate,
                   "price" : price})
 # print(df)
 
