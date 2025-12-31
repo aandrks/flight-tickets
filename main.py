@@ -48,7 +48,7 @@ url = f"https://api.travelpayouts.com/aviasales/v3/grouped_prices?origin={origin
 # print(dict_result['data'])
 # for s in (dict_result['data']):
 #     print(s)
-flights_directions = ['IST', 'SAW', 'AYT', 'DXB', 'AUH', 'EVN', 'MSQ', 'TAS', 'ALA', 'BKK', 'HKT', 'SGN', 'AER', 'MRV', 'KGD', 'LED', 'SVX', 'KZN', 'VVO', 'KHV', 'UUS']
+flights_directions = ['IST', 'SAW', 'AYT', 'DXB', 'AUH', 'EVN', 'MSQ', 'TAS', 'ALA', 'BKK', 'HKT', 'SGN', 'AER', 'MRV', 'KGD', 'LED', 'SVX', 'KZN', 'VVO', 'KHV', 'UUS', 'PKC']
 
 
 def define_timedate(d):
